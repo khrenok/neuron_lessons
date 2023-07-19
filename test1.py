@@ -1,61 +1,49 @@
-from abc import ABC, abstractmethod
+import numpy as np
+import math
 
 
-class Node(ABC):
+class Neuron:
 
-    @abstractmethod
-    def __eq__(self, other):
-        
-        pass
+    def __init__(self, w):
 
-
-    @abstractmethod
-    def is_the_solution(self, state):
-        
-        pass
+        self.w = w
 
 
-    @abstractmethod
-    def extend_node(self):
-        
-        pass
+    def y(self, x):
+
+        s = np.dot(self.w, x)
+        return s
 
 
-    @abstractmethod
-    def __str__(self):
-        
-        pass
+    def onestep(x):
+
+        step = 5
+        if x >= step:            
+            return 1
+        else:            
+            return 0
 
 
-    
+    def sigmoid(x):
 
-class BFS:
-
-    def __init__(self, start, final):
-
-        self.start_state = start
-        self.final_state = final
-        self.frontier = [self.start_state]
-        self.checked_nodes = []
-        self.number_of_steps = 0
-        self.path = []
-
-
-    def inser_to_frontier(self, node):
-
-        self.frnotier.append(node)
-
-
-    def remove_from_frontier(self):
-
-        firest_node = self.frontier.pop(0)
-        self.checked_nodes.append(first_node)
-        return first_node
+        return 1 / (1 + np.exp(0.25 * (-x)))
 
         
 
 
-    
 
 
-    
+Xi = np.array([1, 1, 1, 1])
+Wi = np.array([5, 4, 1, 1])
+
+n = Neuron(Wi)
+print('S1 = ', n.y(Xi))
+print('Result ', Neuron.onestep(n.y(Xi)))
+print('Result ', Neuron.sigmoid(n.y(Xi)))    
+
+
+Xi = np.array([0, 0, 0, 1])
+print('S1 = ', n.y(Xi))
+print('Result ', Neuron.onestep(n.y(Xi)))    
+print('Result ', Neuron.sigmoid(n.y(Xi)))    
+
